@@ -2,6 +2,11 @@
   "dependencies": {
     "inquirer": "^8.2.0"
   },
+  "scripts": {
+    "start": "node employee.js",
+    "test": "jest",
+    "test-watch": "jest --watch *.js"
+  },
   "devDependencies": {
     "jest": "^27.3.1"
   }
