@@ -3,7 +3,7 @@
     "inquirer": "^8.2.0"
   },
   "scripts": {
-    "start": "node employee.js",
+    "start": "node index.js",
     "test": "jest",
     "test-watch": "jest --watch *.js"
   },
