@@ -14,15 +14,20 @@ describe("Engineer class", () => {
       expect(engineer.getEmail()).toBe("barbara@fake.com");
       expect(engineer.getRole()).toBe("Engineer");
       expect(engineer.getGit()).toBe("babs");
-      // });
     });
-    //   describe("Engineer constructor", () => {
-    //     it("should create an object with a name, id, email and role if provided valid arguments", () => {
-    //       const Engineer2 = new Engineer("Jack White", 98765, "jack@fake.com");
-    //       expect(Engineer2.name).toBe("Jack White");
-    //       expect(Engineer2.id).toBe(12345);
-    //       expect(Engineer2.email).toBe("jack@fake.com");
-    //       expect(Engineer2.role).toBe("Engineer");
-    //     });
+  });
+  describe("Engineer constructor", () => {
+    it("should create an object with a name, id, email and role if provided valid arguments", () => {
+      const engineer2 = new Engineer(
+        "Jack White",
+        98765,
+        "jack@fake.com",
+        "jackw"
+      );
+      expect(engineer2.name).toBe("Jack White");
+      expect(engineer2.id).toBe(98765);
+      expect(engineer2.email).toBe("jack@fake.com");
+      expect(engineer2.git).toBe("jackw");
+    });
   });
 });
