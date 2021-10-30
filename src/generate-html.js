@@ -1,43 +1,42 @@
-const generateHTML = (manager, engineers, interns) => {
+//need to add email and github links
+
+async function generateHTML(manager, engineers, interns) {
+  console.log("generating", manager, engineers, interns);
   let html = "";
   html += `<div class="card mx-2" style="width: 18rem">
 <div class="card-header text-white bg-primary">
-<h3>${manager[0].name}</h3>
+<h3>${manager.name}</h3>
 <h3>Manager</h3>
-<p></p>
-<p>Office number: </p>
 </div>
 <div class="card-body bg-light">
   <p class="card-text">
     <ul class="list-group">
-    <li class="list-group-item">ID: ${manager[0].id}</li>
-    <li class="list-group-item">Email: ${manager[0].email}</li>
-    <li class="list-group-item">Office Number: ${manager[0].phone}</li>
+    <li class="list-group-item">ID: ${manager.id}</li>
+    <li class="list-group-item">Email: ${manager.email}</li>
+    <li class="list-group-item">Office Number: ${manager.phone}</li>
     </ul>
   </p>
 </div>
 </div>`;
 
-  engineers.foreach((engineer) => {
+  engineers.forEach((engineer) => {
     html += `<div class="card mx-2" style="width: 18rem">
     <div class="card-header text-white bg-primary">
     <h3>${engineer.name}</h3>
     <h3>Engineer</h3>
-    <p></p>
-    <p>Office number: </p>
     </div>
     <div class="card-body bg-light">
       <p class="card-text">
         <ul class="list-group">
         <li class="list-group-item">ID: ${engineer.id}</li>
         <li class="list-group-item">Email: ${engineer.email}</li>
-        <li class="list-group-item">Office Number: ${engineer.github}</li>
+        <li class="list-group-item">Github: ${engineer.git}</li>
         </ul>
       </p>
     </div>
     </div>`;
   });
-  interns.foreach((intern) => {
+  interns.forEach((intern) => {
     html += `<div class="card mx-2" style="width: 18rem">
     <div class="card-header text-white bg-primary">
     <h3>${intern.name}</h3>
@@ -84,6 +83,6 @@ const generateHTML = (manager, engineers, interns) => {
     </section>  
   </body>
 </html>`;
-};
+}
 
-module.exports(generateHTML);
+module.exports = generateHTML;

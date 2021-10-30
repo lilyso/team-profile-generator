@@ -5,7 +5,7 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const colors = require("colors");
-const content = require("./src/generate-html.js");
+const generateHTML = require("./src/generate-html.js");
 
 // Array of questions for user input
 const managerQs = [
@@ -202,21 +202,21 @@ async function init() {
     next = await ask(nextEmployeeQ);
   }
   console.log(engineers, interns, manager);
-  data = (engineers, interns, manager);
 
-  let generatePage = generateHTML(data);
-  writeToFile(generatePage);
+  let generatePage = await generateHTML(manager, engineers, interns);
+  console.log(generatePage);
+  // writeToFile(generatePage);
 }
 
 init();
 
 // Write index.html file
 function writeToFile() {
-  fs.writeFile(`index.html`, data, (err) => {
+  fs.writeFile(`./dist/index.html`, data, (err) => {
     if (err) {
       console.error(err);
       return;
     }
-    console.log("File successfully generated = index.html");
+    console.log(colors.green("\nFile successfully generated = index.html"));
   });
 }
