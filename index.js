@@ -1,12 +1,11 @@
 // Packages needed for this application
 const inquirer = require("inquirer");
 const fs = require("fs");
-const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const colors = require("colors");
-// const content = require("./src/generate-html.js");
+const content = require("./src/generate-html.js");
 
 // Array of questions for user input
 const managerQs = [
@@ -203,17 +202,21 @@ async function init() {
     next = await ask(nextEmployeeQ);
   }
   console.log(engineers, interns, manager);
+  data = (engineers, interns, manager);
+
+  let generatePage = generateHTML(data);
+  writeToFile(generatePage);
 }
 
 init();
 
-// Write README file
-// function writeToFile(filename, data) {
-//   fs.writeFile(`${filename}.md`, data, (err) => {
-//     if (err) {
-//       console.error(err);
-//       return;
-//     }
-//     console.log("File successfully generated = README.md");
-//   });
-// }
+// Write index.html file
+function writeToFile() {
+  fs.writeFile(`index.html`, data, (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log("File successfully generated = index.html");
+  });
+}
