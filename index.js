@@ -5,6 +5,7 @@ const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const colors = require("colors");
 // const content = require("./src/generate-html.js");
 
 // Array of questions for user input
@@ -12,21 +13,51 @@ const managerQs = [
   {
     name: "name",
     message: "Enter Manager's full name:",
+    validate: (input) => {
+      if (!input) {
+        console.log(colors.red("\nPlease enter a name"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
   {
     name: "id",
     message: "Enter their employee id:",
+    validate: (input) => {
+      if (isNaN(input) || !input) {
+        console.log(colors.red("\nPlease add a valid number"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
   {
     name: "email",
     message: "Enter their email:",
+    validate: (email) => {
+      let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+      if (valid) {
+        return true;
+      } else {
+        console.log(colors.red("\nPlease enter a valid email"));
+        return false;
+      }
+    },
     type: "input",
   },
   {
     name: "phone",
     message: "Enter their office phone number:",
+    validate: (input) => {
+      if (isNaN(input) || !input) {
+        console.log(colors.red("\nPlease add a valid number"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
 ];
@@ -42,21 +73,51 @@ const engineerQs = [
   {
     name: "name",
     message: "Enter their full name:",
+    validate: (input) => {
+      if (!input) {
+        console.log(colors.red("\nPlease enter a name"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
   {
     name: "id",
     message: "Enter their employee id:",
+    validate: (input) => {
+      if (isNaN(input) || !input) {
+        console.log(colors.red("\nPlease add a valid number"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
   {
     name: "email",
     message: "Enter their email:",
+    validate: (email) => {
+      let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+      if (valid) {
+        return true;
+      } else {
+        console.log(colors.red("\nPlease enter a valid email"));
+        return false;
+      }
+    },
     type: "input",
   },
   {
     name: "github",
     message: "Enter their github user name",
+    validate: (input) => {
+      if (!input) {
+        console.log(colors.red("\nPlease enter a github user name"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
 ];
@@ -65,21 +126,51 @@ const internQs = [
   {
     name: "name",
     message: "Enter their full name:",
+    validate: (input) => {
+      if (!input) {
+        console.log(colors.red("\nPlease enter a name"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
   {
     name: "id",
     message: "Enter their employee id:",
+    validate: (input) => {
+      if (isNaN(input) || !input) {
+        console.log(colors.red("\nPlease add a valid number"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
   {
     name: "email",
     message: "Enter their email:",
+    validate: (email) => {
+      let valid = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+      if (valid) {
+        return true;
+      } else {
+        console.log(colors.red("\nPlease enter a valid email"));
+        return false;
+      }
+    },
     type: "input",
   },
   {
     name: "school",
     message: "Enter the school they graduated from:",
+    validate: (input) => {
+      if (!input) {
+        console.log(colors.red("\nPlease enter a school"));
+        return false;
+      }
+      return true;
+    },
     type: "input",
   },
 ];
@@ -89,24 +180,16 @@ async function ask(questions) {
   return answers;
 }
 
-async function addEmployee(employee) {
-  let response;
-  if (employee.name === "Engineer") {
-    response = await ask(engineerQs);
-  } else {
-    response = await ask(internQs);
-  }
-  return response;
-}
+// Initialize app - run inquirer
 
 async function init() {
   let mgmtAnswer = await ask(managerQs);
-  let next = await inquirer.prompt(nextEmployeeQ);
+  const manager = new Manager(mgmtAnswer);
+  let next = await ask(nextEmployeeQ);
   let team;
   let objectItem;
   let engineers = [];
   let interns = [];
-  console.log(next);
   while (next.employee !== "Exit") {
     if (next.employee === "Engineer") {
       team = await ask(engineerQs);
@@ -117,9 +200,9 @@ async function init() {
       objectItem = new Intern(team);
       interns.push(objectItem);
     }
-    next = await inquirer.prompt(nextEmployeeQ);
+    next = await ask(nextEmployeeQ);
   }
-  console.log(engineers, interns, mgmtAnswer);
+  console.log(engineers, interns, manager);
 }
 
 init();
@@ -134,17 +217,3 @@ init();
 //     console.log("File successfully generated = README.md");
 //   });
 // }
-
-// Initialize app - run inquirer
-// function init() {
-//   var prompt = inquirer.createPromptModule();
-
-//   prompt(questions).then((data) => {
-//     console.log(data);
-//     // var readme = content(data);
-//     // writeToFile("index", readme);
-//   });
-// }
-
-// // Initialize app
-// init();
