@@ -1,5 +1,4 @@
-//need to add email and github links
-
+// Generate cards
 async function generateHTML(manager, engineers, interns) {
   let html = "";
   html += `<div class="card mx-2" style="width: 18rem">
@@ -52,6 +51,7 @@ async function generateHTML(manager, engineers, interns) {
     </div>
     </div>`;
   });
+  // Generate html page
   return `<!DOCTYPE html>
 <html>
   <head>

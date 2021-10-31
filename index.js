@@ -7,7 +7,7 @@ const Intern = require("./lib/Intern");
 const colors = require("colors");
 const generateHTML = require("./src/generate-html.js");
 
-// Array of questions for user input
+// Manager questions
 const managerQs = [
   {
     name: "name",
@@ -61,6 +61,7 @@ const managerQs = [
   },
 ];
 
+// Add new employee question
 const nextEmployeeQ = {
   type: "list",
   name: "employee",
@@ -68,6 +69,7 @@ const nextEmployeeQ = {
   choices: ["Engineer", "Intern", "Exit"],
 };
 
+// Engineer questions
 const engineerQs = [
   {
     name: "name",
@@ -121,6 +123,7 @@ const engineerQs = [
   },
 ];
 
+// Intern questions
 const internQs = [
   {
     name: "name",
@@ -174,13 +177,13 @@ const internQs = [
   },
 ];
 
+// Ask questions
 async function ask(questions) {
   let answers = await inquirer.prompt(questions);
   return answers;
 }
 
-// Initialize app - run inquirer
-
+// Initialise app - run inquirer
 async function init() {
   let mgmtAnswer = await ask(managerQs);
   const manager = new Manager(mgmtAnswer);
@@ -189,6 +192,7 @@ async function init() {
   let objectItem;
   let engineers = [];
   let interns = [];
+  // Engineer & Intern questions loop
   while (next.employee !== "Exit") {
     if (next.employee === "Engineer") {
       team = await ask(engineerQs);
@@ -201,14 +205,14 @@ async function init() {
     }
     next = await ask(nextEmployeeQ);
   }
-
+  // Generate html using user input
   let generatePage = await generateHTML(manager, engineers, interns);
   writeToFile(generatePage);
 }
 
 init();
 
-// Write index.html file
+// Generate index.html file with employee details
 function writeToFile(generatePage) {
   fs.writeFile(`./dist/index.html`, generatePage, (err) => {
     if (err) {
