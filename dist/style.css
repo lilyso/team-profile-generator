@@ -1,0 +1,23 @@
+:root {
+  --redcolor: #ff6700;
+  --darkblue: #004e98;
+  --dustyblue: #3a6ea5;
+  --lightblue: #6d8db0;
+  --lightgrey: #ebebeb;
+}
+
+.manager-card {
+  background-color: var(--darkblue);
+}
+
+.engineer-card {
+  background-color: var(--dustyblue);
+}
+
+.intern-card {
+  background-color: var(--lightblue);
+}
+
+.header {
+  background-color: var(--redcolor);
+}

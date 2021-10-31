@@ -201,18 +201,16 @@ async function init() {
     }
     next = await ask(nextEmployeeQ);
   }
-  console.log(engineers, interns, manager);
 
   let generatePage = await generateHTML(manager, engineers, interns);
-  console.log(generatePage);
-  // writeToFile(generatePage);
+  writeToFile(generatePage);
 }
 
 init();
 
 // Write index.html file
-function writeToFile() {
-  fs.writeFile(`./dist/index.html`, data, (err) => {
+function writeToFile(generatePage) {
+  fs.writeFile(`./dist/index.html`, generatePage, (err) => {
     if (err) {
       console.error(err);
       return;
