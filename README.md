@@ -1,7 +1,7 @@
 # Team Profile Generator
 
 > A team profile builder using the command line.
-> Demo [_here_](https://www.example.com).
+> Demo [_here_](https://watch.screencastify.com/v/8iEP4bR0nSJ1OyCsyLv9).
 
 ## Table of Contents
 
