@@ -11,13 +11,12 @@
 - [Screenshots](#screenshots)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Room for Improvement](#room-for-improvement)
 - [Contact](#contact)
 - [License](#license)
 
 ## General Information
 
-The Team Profile Generator creates generates a HTML webpage using the command line to enter details of your team. A simple page is created with each team member's details for quick reference.
+The Team Profile Generator creates a HTML webpage using the command line to enter details of your team. A simple page is created with each team member's details for quick reference.
 
 ## Technologies Used
 
@@ -32,12 +31,19 @@ The Team Profile Generator creates generates a HTML webpage using the command li
 ## Features
 
 - Ability to add 1 manager and multiple engineers and interns.
-- Ability to add name, employee ID, email for each team member.
-- Add a phone number for manager, a linked github link for engineers and school for intern.
+- Ability to add name, employee ID, and email for each team member.
+- Add a phone number for manager, a linked github link for engineers and a school for intern.
 
 ## Screenshots
 
-![Example screenshot](dist/images/Team-Profile-Generator-Screenshot.png)
+Page Example
+
+![HTML example](dist/images/Team-Profile-Generator-Screenshot.png)
+
+Demo Example
+
+![Demo Example](dist/images/demo-example.png)
+![Engineer example](dist/images/engineer-example.png)
 
 ## Setup
 
@@ -56,20 +62,6 @@ node index.js
 ```
 
 Follow the prompts to first enter manager details and continue to add engineers and interns. When your team details have been entered, exit the application and your html page will be generated.
-
-## Room for Improvement
-
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
-
-Room for improvement:
-
-- Improvement to be done 1
-- Improvement to be done 2
-
-To do:
-
-- Feature to be added 1
-- Feature to be added 2
 
 ## Contact
 
